@@ -1,0 +1,4 @@
+Format time in minutes and seconds.
+Add functions for incrementing and decrementing time, and corresponding buttons. Limit of max 2 hours, min 1 minute.
+Able to click on timesetters and type in the amount of time instead of using buttons.
+Style divs with background that increments as time is used up. Or border to circle round to 360degrees.
