@@ -1,12 +1,12 @@
-Format time in minutes and seconds. - Allow for hours or set limit.
-
 Create 'reverse time formatter' so user can input in minutes and it is sent as seconds. (easy - just multiply input by 60...)
 
 Able to click on timesetters and type in the amount of time instead of using buttons. (change cursor too).
 OR add a range input.
-Add limit to times that you can set (e.g. minimum 1 minute, max 2 hours).
+Able to hold mouse down to increment/decrement time instead of requiring clicks..... held value increases slowly then fast as it is held longer.
+
+On main pomo, only show a time when it's running or paused... otherwise just a big START
 
 
-Style divs with background that increments as time is used up. Or border to circle round to 360degrees.
+Style pomodiv with border that marks progress as border circle growing round to 360degrees.
 
 Add cancel button to stop timer and reset to whatever pomo amount is.

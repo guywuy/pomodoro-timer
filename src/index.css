@@ -25,10 +25,12 @@ p {
   color: white;
 }
 #Pomodoro{
-  right:80px;
+  left:80px;
 }
 #Break{
-  left: 80px;
+  right: 80px;
+  border: 1px solid yellow;
+  box-shadow: 0 0 12px yellow;
 }
 .timesetter-time-display{
   font-size: 3em;

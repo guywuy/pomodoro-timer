@@ -70,18 +70,51 @@ class App extends Component {
   }
 
   // Increment the amount of time set (default is by 60seconds)
-  //Updates the time remaining IFF countdown is not in progress, and the altered value is the same as the current state
   increaseTime(whichTime, amount=60){
     this.setState((prevState)=>{
       if (whichTime==='Pomodoro'){
-        return {
-          pomodoroTime : prevState.pomodoroTime + amount,
-          timeRemaining : (this.state.inProgress&&(this.state.breakOrPomo==='Break')) ? this.state.timeRemaining : prevState.pomodoroTime + amount
+        // Button pressed was from Pomodoro side
+        let newPomoTime;
+        //Ensure that the new time would not be more than 2 hours
+        if (prevState.pomodoroTime + amount >= 7200){
+          alert('Maximum 2 hours');
+          newPomoTime = prevState.pomodoroTime;
+        } else {
+          newPomoTime = prevState.pomodoroTime + amount;
         }
-      } else {
+
+        // Only update current time remaining if timer is not inProgress and mode is in Pomodoro
+        let newTimeRemaining;
+        if(this.state.breakOrPomo==='Pomodoro' && !this.state.inProgress){
+          newTimeRemaining = newPomoTime;
+        } else {
+          newTimeRemaining = this.state.timeRemaining;
+        }
         return {
-          breakTime : prevState.breakTime + amount
-          // timeRemaining : (this.state.inProgress&&(this.state.breakOrPomo==='Pomodoro')) ? this.state.timeRemaining : prevState.breakTime + amount
+          'pomodoroTime' : newPomoTime,
+          'timeRemaining' : newTimeRemaining
+        }
+
+      } else {
+        //Button was pressed on break side
+        let newBreakTime;
+        //Ensure that the new time would not be more than 2 hours
+        if (prevState.breakTime + amount >= 7200){
+          alert('Maximum 2 hours');
+          newBreakTime = prevState.breakTime;
+        } else {
+          newBreakTime = prevState.breakTime + amount;
+        }
+        // Only update current time remaining if timer is not inProgress and mode is in Break
+        let newTimeRemaining;
+        if(this.state.breakOrPomo==='Break' && !this.state.inProgress){
+          newTimeRemaining = newBreakTime;
+        } else {
+          newTimeRemaining = this.state.timeRemaining;
+        }
+        return {
+          'breakTime' : newBreakTime,
+          'timeRemaining' : newTimeRemaining
         }
       }
     });
@@ -91,14 +124,49 @@ class App extends Component {
   decreaseTime(whichTime, amount=60){
     this.setState((prevState)=>{
       if (whichTime==='Pomodoro'){
-        return {
-          pomodoroTime : prevState.pomodoroTime - amount,
-          timeRemaining : (this.state.inProgress&&(this.state.breakOrPomo==='Break')) ? this.state.timeRemaining : prevState.pomodoroTime - amount
+        // Button pressed was from Pomodoro side
+        let newPomoTime;
+        //Ensure that the new time would not be less than 1 minute
+        if (prevState.pomodoroTime - amount <= 59){
+          alert('Minimum 1 minute');
+          newPomoTime = prevState.pomodoroTime;
+        } else {
+          newPomoTime = prevState.pomodoroTime - amount;
         }
-      } else {
+
+        // Only update current time remaining if timer is not inProgress and mode is in Pomodoro
+        let newTimeRemaining;
+        if(this.state.breakOrPomo==='Pomodoro' && !this.state.inProgress){
+          newTimeRemaining = newPomoTime;
+        } else {
+          newTimeRemaining = this.state.timeRemaining;
+        }
         return {
-          breakTime : prevState.breakTime - amount
-          // timeRemaining : (this.state.inProgress&&(this.state.breakOrPomo==='Pomodoro')) ? this.state.timeRemaining : prevState.breakTime - amount
+          'pomodoroTime' : newPomoTime,
+          'timeRemaining' : newTimeRemaining
+        }
+
+      } else {
+        //Button changing the break time was pressed
+        let newBreakTime;
+        //Ensure that the new time would not be less than 1 minute
+        if (prevState.breakTime - amount <= 59){
+          alert('Minimum 1 minute');
+          newBreakTime = prevState.breakTime;
+        } else {
+          newBreakTime = prevState.breakTime - amount;
+        }
+
+        // Only update current time remaining if timer is not inProgress and mode is in Break
+        let newTimeRemaining;
+        if(this.state.breakOrPomo==='Break' && !this.state.inProgress){
+          newTimeRemaining = newBreakTime;
+        } else {
+          newTimeRemaining = this.state.timeRemaining;
+        }
+        return {
+          'breakTime' : newBreakTime,
+          'timeRemaining' : newTimeRemaining
         }
       }
     });
@@ -107,8 +175,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <Timesetter className="countdown-setter" time={this.state.pomodoroTime} label="Pomodoro"  onIncrement={this.increaseTime} onDecrement={this.decreaseTime} />
         <Timesetter className="breaktime-setter" time={this.state.breakTime} label="Break" onIncrement={this.increaseTime} onDecrement={this.decreaseTime} />
-        <Timesetter className="countdown-setter" time={this.state.pomodoroTime} label="Pomodoro"  onIncrement={this.increaseTime} onDecrement={this.decreaseTime} />
         <Pomodoro className="pomodoro-container" time={this.state.pomodoroTime} timeRemaining={this.state.timeRemaining} currentLabel={this.state.breakOrPomo} inProgress={this.state.inProgress} handleClick={this.pomoClicked}/>
       </div>
     );
