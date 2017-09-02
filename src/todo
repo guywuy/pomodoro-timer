@@ -1,6 +1,12 @@
 Format time in minutes and seconds. - Allow for hours or set limit.
+
 Create 'reverse time formatter' so user can input in minutes and it is sent as seconds. (easy - just multiply input by 60...)
-Add functions for incrementing and decrementing time, and corresponding buttons. Limit of max 2 hours, min 1 minute.
-Able to click on timesetters and type in the amount of time instead of using buttons. (change cursor too)
+
+Able to click on timesetters and type in the amount of time instead of using buttons. (change cursor too).
+OR add a range input.
+Add limit to times that you can set (e.g. minimum 1 minute, max 2 hours).
+
+
 Style divs with background that increments as time is used up. Or border to circle round to 360degrees.
+
 Add cancel button to stop timer and reset to whatever pomo amount is.

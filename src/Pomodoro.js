@@ -5,7 +5,6 @@ import {formatTime} from './TimeFormatter';
 export class Pomodoro extends Component {
   constructor(props){
     super(props);
-    var currentTime = this.props.timeRemaining || this.props.time;
   }
 
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {formatTime} from './TimeFormatter';
+import {AlterTimeButton} from './AlterTimeButton';
 
 export class Timesetter extends Component {
   constructor(props){
@@ -12,7 +13,9 @@ export class Timesetter extends Component {
     return (
       <div className="timesetter" id={this.props.label}>
         <p className="timesetter-time-display">{formatTime(this.props.time, 'mins')}</p>
+        <AlterTimeButton onClick={this.props.onDecrement} label={'less'} which={this.props.label} />
         <p className="timesetter-label">{this.props.label}</p>
+        <AlterTimeButton onClick={this.props.onIncrement} label={'more'} which={this.props.label} />
       </div>
     );
   }
@@ -20,5 +23,7 @@ export class Timesetter extends Component {
 
 Timesetter.propTypes = {
   time : PropTypes.number,
-  label : PropTypes.string
+  label : PropTypes.string,
+  onIncrement : PropTypes.func,
+  onDecrement : PropTypes.func
 }
