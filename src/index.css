@@ -1,9 +1,12 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Quicksand', sans-serif;
   box-sizing: border-box;
   background: darkgrey;
+}
+p {
+  font-weight: 100;
 }
 .App {
   text-align: center;
@@ -13,6 +16,7 @@ body {
 }
 .timesetter{
   border: 1px solid red;
+  box-shadow: 0 0 12px red;
   border-radius: 50%;
   width: 160px;
   height: 160px;
@@ -38,6 +42,7 @@ body {
 }
 .pomodoro {
   border: 1px solid green;
+  box-shadow: 0 0 22px white;
   border-radius: 50%;
   width: 330px;
   height: 330px;
@@ -50,4 +55,12 @@ body {
   font-size: 4em;
   position: relative;
   top: 10%
+}
+.pomodoro-label {
+  font-size: 2em;
+  bottom: 20%;
+}
+.pomodoro.active{
+  border: 2px solid green;
+  box-shadow: 0 0 28px green;
 }

@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {formatTime} from './TimeFormatter';
 
 export class Pomodoro extends Component {
   constructor(props){
     super(props);
+    var currentTime = this.props.timeRemaining || this.props.time;
   }
 
 
   render() {
-    let msg = !this.props.inProgress ? 'Start' : '';
+    let msg = !this.props.inProgress ? 'Start' : 'Pause';
+    let pomoActive = this.props.inProgress ? ' active' : '';
     return (
-      <div className="pomodoro" onClick={this.props.handleClick} >
-        <p className="pomodoro-time-display">{this.props.time}</p>
-        <p>{msg}</p>
+      <div className={"pomodoro" + pomoActive} onClick={this.props.handleClick} >
+        <p className="pomodoro-time-display">{formatTime(this.props.timeRemaining || this.props.time)}</p>
+        <p className="pomodoro-label">{msg}</p>
       </div>
     );
   }
@@ -21,6 +24,7 @@ export class Pomodoro extends Component {
 Pomodoro.propTypes = {
   "handleClick" : PropTypes.func,
   "time" : PropTypes.number,
-  "currentLabel" : PropTypes.boolean,
-  "status" : PropTypes.boolean
+  "timeRemaining" : PropTypes.number,
+  "currentLabel" : PropTypes.string,
+  "inProgress" : PropTypes.bool
 }
