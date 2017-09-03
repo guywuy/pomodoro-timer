@@ -1,5 +1,3 @@
-For some reason once time input is submitted, value is lost and time is reset to before input... Due to form submission refreshing page...? But ev.preventDefault doesn't stop it.
-One solution which simplifies things is to remove 'time-display' p entirely, just have form input with no submission, no border, no state needed for 'editing' in timesetter.
 Constrain number input to integers (or format pomodoro time display to no decimal places....)
 AND/OR add a range input.
 

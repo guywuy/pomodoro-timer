@@ -9,16 +9,10 @@ export function TimesetInput(props) {
     props.onChange(props.which, ev.target.value*60);
   }
 
-  function handleSubmit(ev){
-    ev.preventDefault();
-    props.onChange(props.which, ev.target.value*60);
-    //props.finished();
-    return false;
-  }
-
   return (
     <form>
-      <input type='number' className='timesetter-time-set-input' autoFocus defaultValue={props.time/60} placeholder={props.time/60} onInput={handleChange} onSubmit={handleSubmit} />;
+      <input type='number' className='timesetter-time-set-input' defaultValue={props.time/60} placeholder={props.time/60} onInput={handleChange} />
+      <span className='timesetter-time-unit'>m</span>
     </form>
   )
 }
@@ -26,6 +20,5 @@ export function TimesetInput(props) {
 TimesetInput.propTypes = {
   time : PropTypes.number,
   which : PropTypes.string,
-  onChange : PropTypes.func,
-  finished : PropTypes.func
+  onChange : PropTypes.func
 }
