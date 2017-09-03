@@ -1,7 +1,8 @@
-Create 'reverse time formatter' so user can input in minutes and it is sent as seconds. (easy - just multiply input by 60...)
+For some reason once time input is submitted, value is lost and time is reset to before input... Due to form submission refreshing page...? But ev.preventDefault doesn't stop it.
+One solution which simplifies things is to remove 'time-display' p entirely, just have form input with no submission, no border, no state needed for 'editing' in timesetter.
+Constrain number input to integers (or format pomodoro time display to no decimal places....)
+AND/OR add a range input.
 
-Able to click on timesetters and type in the amount of time instead of using buttons. (change cursor too).
-OR add a range input.
 Able to hold mouse down to increment/decrement time instead of requiring clicks..... held value increases slowly then fast as it is held longer.
 
 On main pomo, only show a time when it's running or paused... otherwise just a big START

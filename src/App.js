@@ -18,6 +18,7 @@ class App extends Component {
     this.timerEnded = this.timerEnded.bind(this);
     this.increaseTime = this.increaseTime.bind(this);
     this.decreaseTime = this.decreaseTime.bind(this);
+    this.setTime = this.setTime.bind(this);
 
     var intervalTimer;
 
@@ -172,11 +173,52 @@ class App extends Component {
     });
   }
 
+  setTime(whichTime, inputTime){
+    //Check time inputted is valid (>60, <7200)
+    if (inputTime<60 || inputTime>7200){
+      return alert('Time must be between 1 minute and 2 hours');
+    } else {
+      if (whichTime==='Pomodoro'){
+        //User has set Pomo time. Update currenttimeremaining if in pomo state and not running, else just update pomotime
+        if(this.state.breakOrPomo==='Pomodoro' && !this.state.inProgress){
+          this.setState((prevState)=>{
+            return {
+              'pomodoroTime' : inputTime,
+              'timeRemaining' : inputTime
+            }
+          })
+        } else {
+          this.setState((prevState)=>{
+            return {
+              'pomodoroTime' : inputTime
+            }
+          })
+        }
+      } else {
+        //User has set Break time. Update currenttimeremaining if in break state and not running, else just update breaktime
+        if(this.state.breakOrPomo==='Break' && !this.state.inProgress){
+          this.setState((prevState)=>{
+            return {
+              'breakTime' : inputTime,
+              'timeRemaining' : inputTime
+            }
+          })
+        } else {
+          this.setState((prevState)=>{
+            return {
+              'breakTime' : inputTime
+            }
+          })
+        }
+      }
+    }
+  }
+
   render() {
     return (
       <div className="App">
-      <Timesetter className="countdown-setter" time={this.state.pomodoroTime} label="Pomodoro"  onIncrement={this.increaseTime} onDecrement={this.decreaseTime} />
-        <Timesetter className="breaktime-setter" time={this.state.breakTime} label="Break" onIncrement={this.increaseTime} onDecrement={this.decreaseTime} />
+        <Timesetter className="countdown-setter" time={this.state.pomodoroTime} label="Pomodoro"  onIncrement={this.increaseTime} onDecrement={this.decreaseTime} onTimeSet={this.setTime} />
+        <Timesetter className="breaktime-setter" time={this.state.breakTime} label="Break" onIncrement={this.increaseTime} onDecrement={this.decreaseTime} onTimeSet={this.setTime} />
         <Pomodoro className="pomodoro-container" time={this.state.pomodoroTime} timeRemaining={this.state.timeRemaining} currentLabel={this.state.breakOrPomo} inProgress={this.state.inProgress} handleClick={this.pomoClicked}/>
       </div>
     );
