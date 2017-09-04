@@ -72,8 +72,6 @@ p {
   right: -5em;
 }
 .pomodoro {
-  border: 1px solid green;
-  box-shadow: 0 0 22px white;
   border-radius: 50%;
   width: 330px;
   height: 330px;
@@ -82,6 +80,8 @@ p {
   left: calc((800px - 330px)/2);
   color: white;
   cursor: pointer;
+  background: darkseagreen;
+  border: 2px solid darkseagreen;
 }
 .pomodoro-time-display{
   font-size: 4em;
@@ -102,8 +102,8 @@ p {
   bottom: -8%;
 }
 .pomodoro.active{
-  border: 2px solid green;
-  box-shadow: 0 0 28px green;
+
+  box-shadow: 0 0 28px darkseagreen;
 }
 .reset-button{
   position: absolute;
