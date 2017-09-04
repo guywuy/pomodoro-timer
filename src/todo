@@ -1,11 +1,7 @@
+
 Constrain number input to integers (or format pomodoro time display to no decimal places....)
 AND/OR add a range input.
 
-Able to hold mouse down to increment/decrement time instead of requiring clicks..... held value increases slowly then fast as it is held longer.
-
-On main pomo, only show a time when it's running or paused... otherwise just a big START
-
 
 Style pomodiv with border that marks progress as border circle growing round to 360degrees.
-
-Add cancel button to stop timer and reset to whatever pomo amount is.
+Add +5 and -5 buttons either side of Pomo to add/detract time remaining..

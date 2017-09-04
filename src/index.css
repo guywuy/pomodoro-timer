@@ -35,7 +35,8 @@ p {
 .timesetter-time-set-input{
   font-size: 3em;
   position: relative;
-  text-align: center;
+  text-align: right;
+  left: -0.2em;
   width: 2em;
   background: none;
   color: white;
@@ -44,7 +45,8 @@ p {
   font-family: 'Quicksand';
 }
 .timesetter-time-unit {
-  top: 2.6em;
+  top: 3em;
+  left: -1.2em;
   position: relative;
 }
 .timesetter-label{
@@ -86,11 +88,32 @@ p {
   position: relative;
   top: 10%
 }
+.pomodoro-time-display.hidden{
+  display: none;
+}
 .pomodoro-label {
+  position: relative;
   font-size: 3em;
-  bottom: 20%;
+  bottom: 10%;
+  text-transform: uppercase;
+}
+.pomodoro-label.big {
+  font-size: 5em;
+  bottom: -8%;
 }
 .pomodoro.active{
   border: 2px solid green;
   box-shadow: 0 0 28px green;
+}
+.reset-button{
+  position: absolute;
+  top: 680px;
+  width: 40px;
+  left: calc((800px - 40px)/2);
+  background: none;
+  border: none;
+  color: white;
+}
+.reset-button.hidden{
+  display: none;
 }

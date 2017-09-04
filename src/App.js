@@ -15,6 +15,7 @@ class App extends Component {
       'breakOrPomo' : 'Pomodoro'
     }
     this.pomoClicked = this.pomoClicked.bind(this);
+    this.resetPomodoro = this.resetPomodoro.bind(this);
     this.timerEnded = this.timerEnded.bind(this);
     this.increaseTime = this.increaseTime.bind(this);
     this.decreaseTime = this.decreaseTime.bind(this);
@@ -24,6 +25,7 @@ class App extends Component {
 
   }
 
+  //When pomodoro is clicked, pause or start the timer depending on state and change 'inProgress'
   pomoClicked(){
     this.state.inProgress ? this.pauseTimer() : this.startTimer();
     this.setState((prevState)=>{
@@ -33,6 +35,15 @@ class App extends Component {
     });
   }
 
+  //stop pomo and reset time remaining to pomotime and mode to pomomode
+  resetPomodoro(){
+    this.pauseTimer();
+    this.setState({
+      'inProgress' : false,
+      'timeRemaining' : this.state.pomodoroTime,
+      'breakOrPomo' : 'Pomodoro'
+    })
+  }
   startTimer(){
     this.intervalTimer = setInterval(()=>{
       if (this.state.timeRemaining<=1){
@@ -219,7 +230,14 @@ class App extends Component {
       <div className="App">
         <Timesetter className="countdown-setter" time={this.state.pomodoroTime} label="Pomodoro"  onIncrement={this.increaseTime} onDecrement={this.decreaseTime} onTimeSet={this.setTime} />
         <Timesetter className="breaktime-setter" time={this.state.breakTime} label="Break" onIncrement={this.increaseTime} onDecrement={this.decreaseTime} onTimeSet={this.setTime} />
-        <Pomodoro className="pomodoro-container" time={this.state.pomodoroTime} timeRemaining={this.state.timeRemaining} currentLabel={this.state.breakOrPomo} inProgress={this.state.inProgress} handleClick={this.pomoClicked}/>
+        <Pomodoro className="pomodoro-container"
+        time={this.state.pomodoroTime}
+        timeRemaining={this.state.timeRemaining}
+        currentLabel={this.state.breakOrPomo}
+        inProgress={this.state.inProgress}
+        handleClick={this.pomoClicked}
+        handleReset={this.resetPomodoro}
+        />
       </div>
     );
   }
