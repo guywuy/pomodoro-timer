@@ -1,7 +1,3 @@
 
 Constrain number input to integers (or format pomodoro time display to no decimal places....)
 AND/OR add a range input.
-
-
-Style pomodiv with border that marks progress as border circle growing round to 360degrees.
-Add +5 and -5 buttons either side of Pomo to add/detract time remaining..

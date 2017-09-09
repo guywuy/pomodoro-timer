@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {formatTime} from './TimeFormatter';
 import {AlterTimeButton} from './AlterTimeButton';
 import {TimesetInput} from './TimesetInput';
 
 export class Timesetter extends Component {
-  constructor(props){
-    super(props);
-  }
-
-
 
   render() {
 

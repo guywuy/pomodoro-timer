@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import {formatTime} from './TimeFormatter';
 
 export class Pomodoro extends Component {
-  constructor(props){
-    super(props);
-  }
-
 
   render() {
     let msg = !this.props.inProgress ? 'Start' : 'Pause';
@@ -16,7 +12,7 @@ export class Pomodoro extends Component {
     let resetButtonHidden = '';
 
     let percentComplete = this.props.timeRemaining/this.props.time*100;
-    let percentCompleteDeg = 360-this.props.timeRemaining/this.props.time*360;
+    // let percentCompleteDeg = 360-this.props.timeRemaining/this.props.time*360;
     let gradient = {
       background: `linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) ${percentComplete}%, ${this.props.currentLabel==='Break' ? 'yellow' : 'darkseagreen'} ${percentComplete+3}%)`,
       // backgroundImage : 'linear-gradient(' + percentCompleteDeg + 'deg, transparent 50%, #A2ECFB 50%),linear-gradient(0deg, #A2ECFB 50%, transparent 50%)'
