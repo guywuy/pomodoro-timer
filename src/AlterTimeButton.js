@@ -7,7 +7,7 @@ export function AlterTimeButton(props) {
     return props.onClick(props.which);
   }
 
-  return <button className={"button-alter-time " + props.label} onClick={handleClick}>{props.label}</button>
+  return <button className={"button-alter-time " + props.label} onClick={handleClick}>{props.label==='more' ? '+' : '-'}</button>
 }
 
 AlterTimeButton.propTypes = {

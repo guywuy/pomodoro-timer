@@ -3,7 +3,7 @@ body {
   padding: 0;
   font-family: 'Quicksand', sans-serif;
   box-sizing: border-box;
-  background: darkgrey;
+  background: url('memphis-colorful.png');
 }
 p {
   font-weight: 100;
@@ -15,22 +15,22 @@ p {
   position: relative;
 }
 .timesetter{
-  border: 1px solid red;
-  box-shadow: 0 0 12px red;
   border-radius: 50%;
+  border: 5px dashed;
   width: 160px;
   height: 160px;
   position: absolute;
   top: 80px;
   color: white;
+  box-shadow: inset -8px -8px 12px rgba(0, 0, 0, 0.2), inset 0px -8px 12px rgba(0, 0, 0, 0.2);
 }
 #Pomodoro{
-  left:80px;
+  left:130px;
+  background: rgb(243, 55, 55);
 }
 #Break{
-  right: 80px;
-  border: 1px solid yellow;
-  box-shadow: 0 0 12px yellow;
+  right: 130px;
+  background: rgb(247, 195, 0);
 }
 .timesetter-time-set-input{
   font-size: 3em;
@@ -41,35 +41,35 @@ p {
   background: none;
   color: white;
   border: none;
-  top: 1em;
+  top: 0.7em;
   font-family: 'Quicksand';
 }
 .timesetter-time-unit {
-  top: 3em;
+  top: 2.2em;
   left: -1.2em;
   position: relative;
 }
 .timesetter-label{
   font-size: 1em;
   position: relative;
-  bottom: -2.6em;
+  bottom: -1.6em;
 }
 .button-alter-time {
   position: absolute;
-  bottom: 33%;
-  color: white;
-  padding: 1em;
-  background: rgba(120, 120, 120, 0.3);
+  bottom: 31%;
+  color: grey;
+  background: rgba(120, 120, 120, 0.1);
   border-radius: 50%;
-  height: 4em;
-  width: 4em;
+  height: 4rem;
+  width: 4rem;
   cursor: pointer;
+  font-size: 2em;
 }
 .button-alter-time.less{
-  left: -5em;
+  left: -5rem;
 }
 .button-alter-time.more{
-  right: -5em;
+  right: -5rem;
 }
 .pomodoro {
   border-radius: 50%;
@@ -80,8 +80,9 @@ p {
   left: calc((800px - 330px)/2);
   color: white;
   cursor: pointer;
-  background: darkseagreen;
-  border: 2px solid darkseagreen;
+  background: rgb(70, 162, 70);
+  border: 6px dashed;
+  box-shadow: inset -8px -8px 12px rgba(0, 0, 0, 0.2), inset 0px -8px 12px rgba(0, 0, 0, 0.2);
 }
 .pomodoro-time-display{
   font-size: 4em;
@@ -102,7 +103,6 @@ p {
   bottom: -8%;
 }
 .pomodoro.active{
-
   box-shadow: 0 0 28px darkseagreen;
 }
 .reset-button{
@@ -116,4 +116,55 @@ p {
 }
 .reset-button.hidden{
   display: none;
+}
+@media screen and (max-width: 500px){
+  .App {
+    width: 400px;
+    }
+  .pomodoro {
+    top:20px;
+    left: calc((400px - 330px)/2);
+  }
+  .timesetter {
+    top: 370px;
+    width: 120px;
+    height: 120px;
+  }
+  #Pomodoro {
+    left: 50px
+  }
+  #Break {
+    right: 50px;
+    top: 480px;
+  }
+  .timesetter-time-unit{
+    display: none;
+  }
+  .timesetter-label{
+    bottom: -3.3rem;
+    color: black;
+    font-weight: 600;
+  }
+  .timesetter-time-set-input{
+    left: -1.5rem;
+    top: 1.8rem;
+  }
+  .button-alter-time {
+    position: absolute;
+    bottom: 31%;
+    color: grey;
+    background: rgba(120, 120, 120, 0.1);
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+    font-size: 2em;
+    line-height: 1rem;
+  }
+  .button-alter-time.less{
+    left: -2.6rem;
+  }
+  .button-alter-time.more{
+    right: -2.6rem;
+  }
 }

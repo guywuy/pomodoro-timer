@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export function TimesetInput(props) {
 
   function handleChange(ev){
-    console.log('inputtime = ' + ev.target.value*60);
+    // console.log('inputtime = ' + ev.target.value*60);
     props.onChange(props.which, ev.target.value*60);
   }
 

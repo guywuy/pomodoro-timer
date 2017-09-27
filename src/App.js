@@ -231,7 +231,7 @@ class App extends Component {
         <Timesetter className="countdown-setter" time={this.state.pomodoroTime} label="Pomodoro"  onIncrement={this.increaseTime} onDecrement={this.decreaseTime} onTimeSet={this.setTime} />
         <Timesetter className="breaktime-setter" time={this.state.breakTime} label="Break" onIncrement={this.increaseTime} onDecrement={this.decreaseTime} onTimeSet={this.setTime} />
         <Pomodoro className="pomodoro-container"
-        time={this.state.pomodoroTime}
+        time={this.state.breakOrPomo==='Pomodoro' ? this.state.pomodoroTime : this.state.breakTime}
         timeRemaining={this.state.timeRemaining}
         currentLabel={this.state.breakOrPomo}
         inProgress={this.state.inProgress}
